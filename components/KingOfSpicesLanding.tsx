@@ -70,13 +70,16 @@ const cuisines = [
 ];
 
 const particles = [
-  { left: "8%", top: "26%", size: "h-1 w-1", delay: 0 },
-  { left: "18%", top: "72%", size: "h-1.5 w-1.5", delay: 0.4 },
-  { left: "34%", top: "18%", size: "h-1 w-1", delay: 0.7 },
-  { left: "52%", top: "32%", size: "h-1.5 w-1.5", delay: 0.2 },
-  { left: "71%", top: "20%", size: "h-1 w-1", delay: 0.9 },
-  { left: "84%", top: "62%", size: "h-1.5 w-1.5", delay: 0.5 },
-  { left: "92%", top: "38%", size: "h-1 w-1", delay: 1.1 },
+  { left: "8%", top: "26%", size: "h-1 w-1", delay: 0, duration: 4.2 },
+  { left: "18%", top: "72%", size: "h-1.5 w-1.5", delay: 0.4, duration: 5.1 },
+  { left: "34%", top: "18%", size: "h-1 w-1", delay: 0.7, duration: 4.8 },
+  { left: "52%", top: "32%", size: "h-1.5 w-1.5", delay: 0.2, duration: 6.2 },
+  { left: "71%", top: "20%", size: "h-1 w-1", delay: 0.9, duration: 5.4 },
+  { left: "84%", top: "62%", size: "h-1.5 w-1.5", delay: 0.5, duration: 4.5 },
+  { left: "92%", top: "38%", size: "h-1 w-1", delay: 1.1, duration: 5.8 },
+  { left: "45%", top: "80%", size: "h-2 w-2", delay: 0.3, duration: 6.5 },
+  { left: "60%", top: "10%", size: "h-1 w-1", delay: 0.8, duration: 4.0 },
+  { left: "25%", top: "45%", size: "h-1 w-1", delay: 0.6, duration: 5.2 },
 ];
 
 const dishes = [
@@ -274,11 +277,11 @@ function Reveal({
   return (
     <motion.div
       className={className}
-      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 36, scale: shouldReduceMotion ? 1 : 0.96, filter: shouldReduceMotion ? "blur(0px)" : "blur(8px)" }}
+      whileInView={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
       viewport={revealViewport}
       transition={{
-        duration: shouldReduceMotion ? 0 : 0.65,
+        duration: shouldReduceMotion ? 0 : 0.8,
         delay: shouldReduceMotion ? 0 : delay,
         ease: [0.22, 1, 0.36, 1],
       }}
@@ -585,7 +588,7 @@ export default function KingOfSpicesLanding() {
                     }
               }
               transition={{
-                duration: 5.4,
+                duration: particle.duration || 5.4,
                 delay: particle.delay,
                 repeat: Infinity,
                 ease: "easeInOut",
@@ -604,7 +607,7 @@ export default function KingOfSpicesLanding() {
               <CookingPot className="h-4 w-4" />
               Best Restaurant & Cafe in Khanna
             </p>
-            <h1 className="font-display max-w-5xl text-5xl font-semibold leading-[0.98] text-[#FAFAFA] sm:text-6xl md:text-7xl xl:text-8xl">
+            <h1 className="font-display max-w-5xl text-4xl font-semibold leading-[1.05] text-[#FAFAFA] sm:text-5xl md:text-7xl xl:text-8xl">
               Experience Authentic Flavours At King Of Spices
             </h1>
             <p className="mt-6 max-w-2xl text-lg leading-8 text-[#FAFAFA]/76 sm:text-xl">
@@ -633,11 +636,11 @@ export default function KingOfSpicesLanding() {
               </motion.a>
             </div>
 
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex gap-3 overflow-x-auto hide-scrollbar whitespace-nowrap pb-2 sm:flex-wrap">
               {cuisines.map((cuisine) => (
                 <span
                   key={cuisine}
-                  className="rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-[#FAFAFA]/72 backdrop-blur-xl"
+                  className="shrink-0 rounded-full border border-white/12 bg-white/8 px-4 py-2 text-sm font-medium text-[#FAFAFA]/72 backdrop-blur-xl"
                 >
                   {cuisine}
                 </span>
@@ -663,7 +666,7 @@ export default function KingOfSpicesLanding() {
                   Spice, smoke and table-side warmth.
                 </h2>
                 <div className="gold-divider my-6" />
-                <div className="grid grid-cols-3 gap-3 text-center">
+                <div className="grid grid-cols-1 gap-3 text-center sm:grid-cols-3">
                   {[
                     ["4.2", "Delivery"],
                     ["11 PM", "Open till"],
@@ -688,11 +691,11 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="about" className="bg-[#F5F1EB] px-5 py-24 text-[#111111] sm:px-8 lg:px-10 lg:py-32">
-        <div className="mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[0.95fr_1.05fr]">
+      <section id="about" className="bg-[#F5F1EB] px-5 py-16 text-[#111111] sm:px-8 md:py-24 lg:px-10 lg:py-32">
+        <div className="mx-auto grid max-w-7xl items-center gap-10 lg:grid-cols-[0.95fr_1.05fr] lg:gap-14">
           <Reveal className="relative">
-            <div className="relative grid grid-cols-2 gap-4 sm:gap-5">
-              <div className="space-y-4 pt-12 sm:space-y-5">
+            <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+              <div className="space-y-4 pt-0 sm:space-y-5 sm:pt-12">
                 <div className="relative h-72 overflow-hidden rounded-[2rem] shadow-2xl">
                   <Image
                     src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=900&q=82"
@@ -779,7 +782,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="menu" className="bg-[#111111] px-5 py-24 text-[#FAFAFA] sm:px-8 lg:px-10 lg:py-32">
+      <section id="menu" className="bg-[#111111] px-5 py-16 text-[#FAFAFA] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-8 lg:grid-cols-[1fr_0.72fr] lg:items-end">
             <SectionHeading
@@ -794,11 +797,11 @@ export default function KingOfSpicesLanding() {
                   Menu range
                 </p>
               </div>
-              <div className="mt-4 flex max-h-32 flex-wrap gap-2 overflow-hidden">
+              <div className="mt-4 flex gap-2 overflow-x-auto hide-scrollbar whitespace-nowrap pb-2 sm:max-h-32 sm:flex-wrap sm:overflow-hidden sm:whitespace-normal sm:pb-0">
                 {menuHighlights.map((item) => (
                   <span
                     key={item}
-                    className="rounded-full border border-white/10 bg-[#2B1D14]/70 px-3 py-1.5 text-xs font-semibold text-[#FAFAFA]/70"
+                    className="shrink-0 rounded-full border border-white/10 bg-[#2B1D14]/70 px-3 py-1.5 text-xs font-semibold text-[#FAFAFA]/70 transition-colors hover:bg-white/10 hover:text-white"
                   >
                     {item}
                   </span>
@@ -850,7 +853,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section className="bg-[#2B1D14] px-5 py-24 text-[#FAFAFA] sm:px-8 lg:px-10 lg:py-32">
+      <section className="bg-[#2B1D14] px-5 py-16 text-[#FAFAFA] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Why choose us"
@@ -888,7 +891,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="gallery" className="bg-[#F5F1EB] px-5 py-24 text-[#111111] sm:px-8 lg:px-10 lg:py-32">
+      <section id="gallery" className="bg-[#F5F1EB] px-5 py-16 text-[#111111] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Gallery"
@@ -929,7 +932,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="reviews" className="bg-[#111111] px-5 py-24 text-[#FAFAFA] sm:px-8 lg:px-10 lg:py-32">
+      <section id="reviews" className="bg-[#111111] px-5 py-16 text-[#FAFAFA] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
           <div>
             <SectionHeading
@@ -1014,7 +1017,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="reserve" className="bg-[#F5F1EB] px-5 py-24 text-[#111111] sm:px-8 lg:px-10 lg:py-32">
+      <section id="reserve" className="bg-[#F5F1EB] px-5 py-16 text-[#111111] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.88fr_1.12fr] lg:items-start">
           <div>
             <SectionHeading
@@ -1175,7 +1178,7 @@ export default function KingOfSpicesLanding() {
         </div>
       </section>
 
-      <section id="contact" className="bg-[#111111] px-5 py-24 text-[#FAFAFA] sm:px-8 lg:px-10 lg:py-32">
+      <section id="contact" className="bg-[#111111] px-5 py-16 text-[#FAFAFA] sm:px-8 md:py-24 lg:px-10 lg:py-32">
         <div className="mx-auto max-w-7xl">
           <SectionHeading
             eyebrow="Location & contact"
@@ -1186,7 +1189,7 @@ export default function KingOfSpicesLanding() {
 
           <div className="mt-12 grid gap-6 lg:grid-cols-[1.12fr_0.88fr]">
             <Reveal>
-              <div className="map-grid relative min-h-[460px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#2B1D14] p-6 shadow-[0_35px_110px_rgba(0,0,0,0.26)]">
+              <div className="map-grid relative min-h-[360px] overflow-hidden rounded-[2rem] border border-white/10 bg-[#2B1D14] p-6 shadow-[0_35px_110px_rgba(0,0,0,0.26)] md:min-h-[460px]">
                 <div className="absolute left-[48%] top-[48%] -translate-x-1/2 -translate-y-1/2">
                   <motion.div
                     className="grid h-20 w-20 place-items-center rounded-full bg-[#D4AF37] text-[#111111] shadow-[0_0_0_18px_rgba(212,175,55,0.12),0_0_90px_rgba(212,175,55,0.35)]"
