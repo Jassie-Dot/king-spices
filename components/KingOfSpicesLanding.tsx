@@ -10,6 +10,7 @@ import {
 } from "motion/react";
 import {
   ArrowRight,
+  ArrowUp,
   BadgeCheck,
   CalendarDays,
   ChefHat,
@@ -359,6 +360,20 @@ export default function KingOfSpicesLanding() {
   const { scrollYProgress } = useScroll();
   const heroY = useTransform(scrollYProgress, [0, 0.25], [0, 90]);
   const heroScale = useTransform(scrollYProgress, [0, 0.25], [1.05, 1]);
+
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 400);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   const today = useMemo(() => {
     const date = new Date();
@@ -1373,6 +1388,22 @@ export default function KingOfSpicesLanding() {
           <p>Designed as a premium sample website for client presentation.</p>
         </div>
       </footer>
+
+      <AnimatePresence>
+        {showScrollTop && (
+          <motion.button
+            initial={{ opacity: 0, scale: 0.8, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.8, y: 20 }}
+            transition={{ duration: 0.2 }}
+            onClick={scrollToTop}
+            className="fixed bottom-6 right-6 z-50 grid h-12 w-12 place-items-center rounded-full bg-[#D4AF37] text-[#111111] shadow-[0_10px_40px_rgba(212,175,55,0.4)] transition hover:bg-[#E8C960] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FAFAFA]"
+            aria-label="Scroll to top"
+          >
+            <ArrowUp className="h-6 w-6" />
+          </motion.button>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
