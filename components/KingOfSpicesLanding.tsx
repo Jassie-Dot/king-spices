@@ -602,6 +602,7 @@ export default function KingOfSpicesLanding() {
             initial={{ opacity: 0, y: shouldReduceMotion ? 0 : 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: shouldReduceMotion ? 0 : 0.85 }}
+            className="flex flex-col items-center text-center lg:items-start lg:text-left"
           >
             <p className="mb-5 inline-flex items-center gap-2 rounded-full border border-[#D4AF37]/35 bg-[#111111]/50 px-4 py-2 text-xs font-bold uppercase text-[#D4AF37] backdrop-blur-xl">
               <CookingPot className="h-4 w-4" />
@@ -615,10 +616,10 @@ export default function KingOfSpicesLanding() {
               together.
             </p>
 
-            <div className="mt-9 flex flex-col gap-4 sm:flex-row">
+            <div className="mt-9 flex w-full flex-col gap-4 sm:w-auto sm:flex-row">
               <motion.a
                 href="#menu"
-                className="inline-flex h-14 items-center justify-center gap-3 rounded-full bg-[#D4AF37] px-7 text-base font-bold text-[#111111] shadow-[0_26px_70px_rgba(212,175,55,0.26)] transition hover:bg-[#E8C960] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FAFAFA]"
+                className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full bg-[#D4AF37] px-7 text-base font-bold text-[#111111] shadow-[0_26px_70px_rgba(212,175,55,0.26)] transition hover:bg-[#E8C960] focus:outline-none focus-visible:ring-2 focus-visible:ring-[#FAFAFA] sm:w-auto"
                 whileHover={shouldReduceMotion ? undefined : { y: -2 }}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
               >
@@ -627,7 +628,7 @@ export default function KingOfSpicesLanding() {
               </motion.a>
               <motion.a
                 href="#reserve"
-                className="inline-flex h-14 items-center justify-center gap-3 rounded-full border border-white/20 bg-white/10 px-7 text-base font-bold text-[#FAFAFA] backdrop-blur-xl transition hover:border-[#D4AF37]/55 hover:bg-[#D4AF37]/12 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37]"
+                className="inline-flex h-14 w-full items-center justify-center gap-3 rounded-full border border-white/20 bg-white/10 px-7 text-base font-bold text-[#FAFAFA] backdrop-blur-xl transition hover:border-[#D4AF37]/55 hover:bg-[#D4AF37]/12 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] sm:w-auto"
                 whileHover={shouldReduceMotion ? undefined : { y: -2 }}
                 whileTap={shouldReduceMotion ? undefined : { scale: 0.98 }}
               >
@@ -636,7 +637,7 @@ export default function KingOfSpicesLanding() {
               </motion.a>
             </div>
 
-            <div className="mt-10 flex gap-3 overflow-x-auto hide-scrollbar whitespace-nowrap pb-2 sm:flex-wrap">
+            <div className="mt-10 flex w-full gap-3 overflow-x-auto hide-scrollbar whitespace-nowrap pb-2 sm:flex-wrap sm:justify-center lg:justify-start">
               {cuisines.map((cuisine) => (
                 <span
                   key={cuisine}
