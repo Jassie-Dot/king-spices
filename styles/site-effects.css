@@ -1,0 +1,49 @@
+.luxury-noise {
+  position: relative;
+}
+
+.luxury-noise::after {
+  pointer-events: none;
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  mix-blend-mode: soft-light;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(250, 250, 250, 0.26) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+.gold-divider {
+  height: 1px;
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      rgba(212, 175, 55, 0.4),
+      rgba(250, 250, 250, 0.18),
+      rgba(212, 175, 55, 0.4),
+      transparent
+    );
+}
+
+.map-grid {
+  background-image:
+    linear-gradient(rgba(250, 250, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(250, 250, 250, 0.08) 1px, transparent 1px),
+    linear-gradient(135deg, rgba(212, 175, 55, 0.14), transparent 42%),
+    linear-gradient(315deg, rgba(245, 241, 235, 0.09), transparent 38%);
+  background-size:
+    42px 42px,
+    42px 42px,
+    100% 100%,
+    100% 100%;
+}
+
+.hide-scrollbar {
+  scrollbar-width: none;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
